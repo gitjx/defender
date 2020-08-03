@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+<head>
+    <meta charset="UTF-8">
+    <title>登录首页</title>
+</head>
+<body>
+    <div class="container blog-content-container">
+        <div sec:authorize="isAuthenticated()">
+            <p>已有用户登录</p>
+            <p>登录的用户为：<span sec:authentication="name"></span></p>
+            <p>用户角色为：<span sec:authentication="principal.authorities"></span></p>
+        </div>
+        <div sec:authorize="isAnonymous()">
+            <p>未有用户登录</p>
+        </div>
+    </div>
+    <div>
+        <a href="/product/add">商品添加</a><br/>
+        <a href="/product/update">商品修改</a><br/>
+        <a href="/product/list">商品列表</a><br/>
+        <a href="/product/delete">商品删除</a><br/>
+    </div>
+</body>
+</html>

@@ -1,17 +1,17 @@
 package com.cib.defender.dao.entity;
 
 public class User {
-    private Boolean id;
+    private Long id;
 
     private String username;
 
     private String password;
 
-    public Boolean getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(Boolean id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

@@ -3,13 +3,13 @@ package com.cib.defender.dao.mapper;
 import com.cib.defender.dao.entity.User;
 
 public interface UserMapper {
-    int deleteByPrimaryKey(Boolean id);
+    int deleteByPrimaryKey(Long id);
 
     int insert(User record);
 
     int insertSelective(User record);
 
-    User selectByPrimaryKey(Boolean id);
+    User selectByPrimaryKey(Long id);
 
     int updateByPrimaryKeySelective(User record);
 
