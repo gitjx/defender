@@ -46,34 +46,47 @@ export const constantRoutes = [
   {
     path: '/',
     component: Layout,
-    redirect: '/dashboard',
+    redirect: '/home',
     children: [{
-      path: 'dashboard',
-      name: 'Dashboard',
-      component: () => import('@/views/dashboard/index'),
-      meta: { title: 'Dashboard', icon: 'dashboard' }
+      path: '/home',
+      name: 'home',
+      component: () => import('@/views/home/index'),
+      meta: { title: '首页', icon: 'dashboard' }
     }]
   },
 
   {
-    path: '/example',
+    path: '/system',
     component: Layout,
-    redirect: '/example/table',
-    name: 'Example',
-    meta: { title: 'Example', icon: 'el-icon-s-help' },
+    redirect: '/system',
+    name: 'system',
+    meta: { title: '系统管理', icon: 'el-icon-s-help' },
     children: [
       {
-        path: 'table',
-        name: 'Table',
-        component: () => import('@/views/table/index'),
-        meta: { title: 'Table', icon: 'table' }
+        path: '/resource',
+        name: 'resource',
+        component: () => import('@/views/system/resources'),
+        meta: { title: '资源管理', icon: 'table' }
       },
       {
-        path: 'tree',
-        name: 'Tree',
-        component: () => import('@/views/tree/index'),
-        meta: { title: 'Tree', icon: 'tree' }
+        path: '/user',
+        name: 'user',
+        component: () => import('@/views/system/users'),
+        meta: { title: '用户管理', icon: 'table' }
+      },
+      {
+        path: '/role',
+        name: 'role',
+        component: () => import('@/views/system/roles'),
+        meta: { title: '角色管理', icon: 'tree' }
+      },
+      {
+        path: '/project',
+        name: 'project',
+        component: () => import('@/views/system/projects'),
+        meta: { title: '项目管理', icon: 'tree' }
       }
+
     ]
   },
 
