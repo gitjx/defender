@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/defender/defender.iml" filepath="$PROJECT_DIR$/defender/defender.iml" />
+      <module fileurl="file://$PROJECT_DIR$/defender/defender-biz/defender-biz.iml" filepath="$PROJECT_DIR$/defender/defender-biz/defender-biz.iml" />
+      <module fileurl="file://$PROJECT_DIR$/defender/defender-common/defender-common.iml" filepath="$PROJECT_DIR$/defender/defender-common/defender-common.iml" />
+      <module fileurl="file://$PROJECT_DIR$/defender/defender-dao/defender-dao.iml" filepath="$PROJECT_DIR$/defender/defender-dao/defender-dao.iml" />
+      <module fileurl="file://$PROJECT_DIR$/defender/defender-web/defender-web.iml" filepath="$PROJECT_DIR$/defender/defender-web/defender-web.iml" />
+    </modules>
+  </component>
+</project>
