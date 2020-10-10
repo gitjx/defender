@@ -2,6 +2,9 @@ package com.cib.defender.biz.service.impl;
 
 import com.cib.defender.biz.service.UserService;
 import com.cib.defender.dao.entity.User;
+import com.cib.defender.dao.mapper.UserMapper;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -16,32 +19,29 @@ import java.util.concurrent.atomic.AtomicLong;
  * @Date:2020/7/26 3:43 PM
  * @Version:1.0
  **/
+@Service
 public class UserServiceImpl implements UserService {
-    private static AtomicLong counter = new AtomicLong();
-    private final ConcurrentMap<Long,User> userMap = new ConcurrentHashMap<Long,User>();
 
+    @Autowired
+    UserMapper userMapper;
+
+    @Override
     public User saveOrUpdateUser(User user) {
-        Long id = user.getId();
-        if(id == null){
-            id = counter.incrementAndGet();
-            user.setId(id);
-        }
-        this.userMap.put(id,user);
-        return user;
+        return null;
     }
 
     @Override
     public void deleteUser(Long id) {
-        this.userMap.remove(id);
+
     }
 
     @Override
     public User getUserById(Long id) {
-        return this.userMap.get(id);
+        return null;
     }
 
     @Override
     public List<User> listUser() {
-        return new ArrayList<User>(this.userMap.values());
+        return userMapper.getAll();
     }
 }
