@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cib.defender.dao.mapper.ExecutionResultMapper" >
+  <resultMap id="BaseResultMap" type="com.cib.defender.dao.entity.ExecutionResult" >
+    <id column="resultID" property="resultid" jdbcType="BIGINT" />
+    <result column="executionID" property="executionid" jdbcType="BIGINT" />
+    <result column="resultTPS" property="resulttps" jdbcType="REAL" />
+    <result column="resultMaxResponse" property="resultmaxresponse" jdbcType="REAL" />
+    <result column="resultAveResponse" property="resultaveresponse" jdbcType="REAL" />
+    <result column="resultMinResponse" property="resultminresponse" jdbcType="REAL" />
+    <result column="resultNetwork" property="resultnetwork" jdbcType="REAL" />
+    <result column="resultSuccess" property="resultsuccess" jdbcType="BIGINT" />
+    <result column="resultFailure" property="resultfailure" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    resultID, executionID, resultTPS, resultMaxResponse, resultAveResponse, resultMinResponse, 
+    resultNetwork, resultSuccess, resultFailure
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_execution_result
+    where resultID = #{resultid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_execution_result
+    where resultID = #{resultid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cib.defender.dao.entity.ExecutionResult" >
+    insert into t_execution_result (resultID, executionID, resultTPS, 
+      resultMaxResponse, resultAveResponse, resultMinResponse, 
+      resultNetwork, resultSuccess, resultFailure
+      )
+    values (#{resultid,jdbcType=BIGINT}, #{executionid,jdbcType=BIGINT}, #{resulttps,jdbcType=REAL}, 
+      #{resultmaxresponse,jdbcType=REAL}, #{resultaveresponse,jdbcType=REAL}, #{resultminresponse,jdbcType=REAL}, 
+      #{resultnetwork,jdbcType=REAL}, #{resultsuccess,jdbcType=BIGINT}, #{resultfailure,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cib.defender.dao.entity.ExecutionResult" >
+    insert into t_execution_result
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="resultid != null" >
+        resultID,
+      </if>
+      <if test="executionid != null" >
+        executionID,
+      </if>
+      <if test="resulttps != null" >
+        resultTPS,
+      </if>
+      <if test="resultmaxresponse != null" >
+        resultMaxResponse,
+      </if>
+      <if test="resultaveresponse != null" >
+        resultAveResponse,
+      </if>
+      <if test="resultminresponse != null" >
+        resultMinResponse,
+      </if>
+      <if test="resultnetwork != null" >
+        resultNetwork,
+      </if>
+      <if test="resultsuccess != null" >
+        resultSuccess,
+      </if>
+      <if test="resultfailure != null" >
+        resultFailure,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="resultid != null" >
+        #{resultid,jdbcType=BIGINT},
+      </if>
+      <if test="executionid != null" >
+        #{executionid,jdbcType=BIGINT},
+      </if>
+      <if test="resulttps != null" >
+        #{resulttps,jdbcType=REAL},
+      </if>
+      <if test="resultmaxresponse != null" >
+        #{resultmaxresponse,jdbcType=REAL},
+      </if>
+      <if test="resultaveresponse != null" >
+        #{resultaveresponse,jdbcType=REAL},
+      </if>
+      <if test="resultminresponse != null" >
+        #{resultminresponse,jdbcType=REAL},
+      </if>
+      <if test="resultnetwork != null" >
+        #{resultnetwork,jdbcType=REAL},
+      </if>
+      <if test="resultsuccess != null" >
+        #{resultsuccess,jdbcType=BIGINT},
+      </if>
+      <if test="resultfailure != null" >
+        #{resultfailure,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cib.defender.dao.entity.ExecutionResult" >
+    update t_execution_result
+    <set >
+      <if test="executionid != null" >
+        executionID = #{executionid,jdbcType=BIGINT},
+      </if>
+      <if test="resulttps != null" >
+        resultTPS = #{resulttps,jdbcType=REAL},
+      </if>
+      <if test="resultmaxresponse != null" >
+        resultMaxResponse = #{resultmaxresponse,jdbcType=REAL},
+      </if>
+      <if test="resultaveresponse != null" >
+        resultAveResponse = #{resultaveresponse,jdbcType=REAL},
+      </if>
+      <if test="resultminresponse != null" >
+        resultMinResponse = #{resultminresponse,jdbcType=REAL},
+      </if>
+      <if test="resultnetwork != null" >
+        resultNetwork = #{resultnetwork,jdbcType=REAL},
+      </if>
+      <if test="resultsuccess != null" >
+        resultSuccess = #{resultsuccess,jdbcType=BIGINT},
+      </if>
+      <if test="resultfailure != null" >
+        resultFailure = #{resultfailure,jdbcType=BIGINT},
+      </if>
+    </set>
+    where resultID = #{resultid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cib.defender.dao.entity.ExecutionResult" >
+    update t_execution_result
+    set executionID = #{executionid,jdbcType=BIGINT},
+      resultTPS = #{resulttps,jdbcType=REAL},
+      resultMaxResponse = #{resultmaxresponse,jdbcType=REAL},
+      resultAveResponse = #{resultaveresponse,jdbcType=REAL},
+      resultMinResponse = #{resultminresponse,jdbcType=REAL},
+      resultNetwork = #{resultnetwork,jdbcType=REAL},
+      resultSuccess = #{resultsuccess,jdbcType=BIGINT},
+      resultFailure = #{resultfailure,jdbcType=BIGINT}
+    where resultID = #{resultid,jdbcType=BIGINT}
+  </update>
+</mapper>

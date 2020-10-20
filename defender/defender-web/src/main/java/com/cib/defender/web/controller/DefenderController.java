@@ -35,11 +35,6 @@ public class DefenderController {
 
     @GetMapping("/index")
     public String index() {
-        System.out.println("step to index");
-        List<User> list = userService.listUser();
-        for(User user : list){
-            System.out.println(user.getUsername());
-        }
         return "index";
     }
 

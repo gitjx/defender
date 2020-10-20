@@ -16,7 +16,6 @@
         <module>defender-dao</module>
         <module>defender-common</module>
         <module>defender-exam</module>
-        <module>defender-exam</module>
     </modules>
     <groupId>com.cib.defender</groupId>
     <artifactId>defender</artifactId>

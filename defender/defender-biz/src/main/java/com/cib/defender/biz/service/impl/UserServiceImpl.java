@@ -6,12 +6,6 @@ import com.cib.defender.dao.mapper.UserMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.ConcurrentMap;
-import java.util.concurrent.atomic.AtomicLong;
-
 /**
  * @ClassName:UserServiceImpl
  * @Description:TODO
@@ -40,8 +34,4 @@ public class UserServiceImpl implements UserService {
         return null;
     }
 
-    @Override
-    public List<User> listUser() {
-        return userMapper.getAll();
-    }
 }

@@ -1,0 +1,117 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cib.defender.dao.mapper.ProjectMapper" >
+  <resultMap id="BaseResultMap" type="com.cib.defender.dao.entity.Project" >
+    <id column="projectID" property="projectid" jdbcType="BIGINT" />
+    <result column="projectName" property="projectname" jdbcType="VARCHAR" />
+    <result column="projectManager" property="projectmanager" jdbcType="VARCHAR" />
+    <result column="projectScripts" property="projectscripts" jdbcType="INTEGER" />
+    <result column="projectWorkings" property="projectworkings" jdbcType="INTEGER" />
+    <result column="projectDate" property="projectdate" jdbcType="DATE" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    projectID, projectName, projectManager, projectScripts, projectWorkings, projectDate
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_project
+    where projectID = #{projectid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_project
+    where projectID = #{projectid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cib.defender.dao.entity.Project" >
+    insert into t_project (projectID, projectName, projectManager, 
+      projectScripts, projectWorkings, projectDate
+      )
+    values (#{projectid,jdbcType=BIGINT}, #{projectname,jdbcType=VARCHAR}, #{projectmanager,jdbcType=VARCHAR}, 
+      #{projectscripts,jdbcType=INTEGER}, #{projectworkings,jdbcType=INTEGER}, #{projectdate,jdbcType=DATE}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cib.defender.dao.entity.Project" >
+    insert into t_project
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="projectid != null" >
+        projectID,
+      </if>
+      <if test="projectname != null" >
+        projectName,
+      </if>
+      <if test="projectmanager != null" >
+        projectManager,
+      </if>
+      <if test="projectscripts != null" >
+        projectScripts,
+      </if>
+      <if test="projectworkings != null" >
+        projectWorkings,
+      </if>
+      <if test="projectdate != null" >
+        projectDate,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="projectid != null" >
+        #{projectid,jdbcType=BIGINT},
+      </if>
+      <if test="projectname != null" >
+        #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="projectmanager != null" >
+        #{projectmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectscripts != null" >
+        #{projectscripts,jdbcType=INTEGER},
+      </if>
+      <if test="projectworkings != null" >
+        #{projectworkings,jdbcType=INTEGER},
+      </if>
+      <if test="projectdate != null" >
+        #{projectdate,jdbcType=DATE},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cib.defender.dao.entity.Project" >
+    update t_project
+    <set >
+      <if test="projectname != null" >
+        projectName = #{projectname,jdbcType=VARCHAR},
+      </if>
+      <if test="projectmanager != null" >
+        projectManager = #{projectmanager,jdbcType=VARCHAR},
+      </if>
+      <if test="projectscripts != null" >
+        projectScripts = #{projectscripts,jdbcType=INTEGER},
+      </if>
+      <if test="projectworkings != null" >
+        projectWorkings = #{projectworkings,jdbcType=INTEGER},
+      </if>
+      <if test="projectdate != null" >
+        projectDate = #{projectdate,jdbcType=DATE},
+      </if>
+    </set>
+    where projectID = #{projectid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cib.defender.dao.entity.Project" >
+    update t_project
+    set projectName = #{projectname,jdbcType=VARCHAR},
+      projectManager = #{projectmanager,jdbcType=VARCHAR},
+      projectScripts = #{projectscripts,jdbcType=INTEGER},
+      projectWorkings = #{projectworkings,jdbcType=INTEGER},
+      projectDate = #{projectdate,jdbcType=DATE}
+    where projectID = #{projectid,jdbcType=BIGINT}
+  </update>
+  <select id="getAllProjects" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_project
+  </select>
+  <select id="selectProjectByName" parameterType="String" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from t_project
+    where projectName = #{projectName}
+  </select>
+</mapper>

@@ -1,0 +1,142 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cib.defender.dao.mapper.ExecutionDeviceMapper" >
+  <resultMap id="BaseResultMap" type="com.cib.defender.dao.entity.ExecutionDevice" >
+    <id column="execDeviceID" property="execdeviceid" jdbcType="BIGINT" />
+    <result column="executionID" property="executionid" jdbcType="BIGINT" />
+    <result column="execDeviceCPU" property="execdevicecpu" jdbcType="REAL" />
+    <result column="execDeviceMem" property="execdevicemem" jdbcType="REAL" />
+    <result column="execDeviceNetworkInput" property="execdevicenetworkinput" jdbcType="REAL" />
+    <result column="execDeviceNetworkOutput" property="execdevicenetworkoutput" jdbcType="REAL" />
+    <result column="execDeviceDiscWrite" property="execdevicediscwrite" jdbcType="REAL" />
+    <result column="execDeviceDiscRead" property="execdevicediscread" jdbcType="REAL" />
+    <result column="deviceID" property="deviceid" jdbcType="BIGINT" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    execDeviceID, executionID, execDeviceCPU, execDeviceMem, execDeviceNetworkInput, 
+    execDeviceNetworkOutput, execDeviceDiscWrite, execDeviceDiscRead, deviceID
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_execution_device
+    where execDeviceID = #{execdeviceid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_execution_device
+    where execDeviceID = #{execdeviceid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cib.defender.dao.entity.ExecutionDevice" >
+    insert into t_execution_device (execDeviceID, executionID, execDeviceCPU, 
+      execDeviceMem, execDeviceNetworkInput, execDeviceNetworkOutput, 
+      execDeviceDiscWrite, execDeviceDiscRead, deviceID
+      )
+    values (#{execdeviceid,jdbcType=BIGINT}, #{executionid,jdbcType=BIGINT}, #{execdevicecpu,jdbcType=REAL}, 
+      #{execdevicemem,jdbcType=REAL}, #{execdevicenetworkinput,jdbcType=REAL}, #{execdevicenetworkoutput,jdbcType=REAL}, 
+      #{execdevicediscwrite,jdbcType=REAL}, #{execdevicediscread,jdbcType=REAL}, #{deviceid,jdbcType=BIGINT}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cib.defender.dao.entity.ExecutionDevice" >
+    insert into t_execution_device
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="execdeviceid != null" >
+        execDeviceID,
+      </if>
+      <if test="executionid != null" >
+        executionID,
+      </if>
+      <if test="execdevicecpu != null" >
+        execDeviceCPU,
+      </if>
+      <if test="execdevicemem != null" >
+        execDeviceMem,
+      </if>
+      <if test="execdevicenetworkinput != null" >
+        execDeviceNetworkInput,
+      </if>
+      <if test="execdevicenetworkoutput != null" >
+        execDeviceNetworkOutput,
+      </if>
+      <if test="execdevicediscwrite != null" >
+        execDeviceDiscWrite,
+      </if>
+      <if test="execdevicediscread != null" >
+        execDeviceDiscRead,
+      </if>
+      <if test="deviceid != null" >
+        deviceID,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="execdeviceid != null" >
+        #{execdeviceid,jdbcType=BIGINT},
+      </if>
+      <if test="executionid != null" >
+        #{executionid,jdbcType=BIGINT},
+      </if>
+      <if test="execdevicecpu != null" >
+        #{execdevicecpu,jdbcType=REAL},
+      </if>
+      <if test="execdevicemem != null" >
+        #{execdevicemem,jdbcType=REAL},
+      </if>
+      <if test="execdevicenetworkinput != null" >
+        #{execdevicenetworkinput,jdbcType=REAL},
+      </if>
+      <if test="execdevicenetworkoutput != null" >
+        #{execdevicenetworkoutput,jdbcType=REAL},
+      </if>
+      <if test="execdevicediscwrite != null" >
+        #{execdevicediscwrite,jdbcType=REAL},
+      </if>
+      <if test="execdevicediscread != null" >
+        #{execdevicediscread,jdbcType=REAL},
+      </if>
+      <if test="deviceid != null" >
+        #{deviceid,jdbcType=BIGINT},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cib.defender.dao.entity.ExecutionDevice" >
+    update t_execution_device
+    <set >
+      <if test="executionid != null" >
+        executionID = #{executionid,jdbcType=BIGINT},
+      </if>
+      <if test="execdevicecpu != null" >
+        execDeviceCPU = #{execdevicecpu,jdbcType=REAL},
+      </if>
+      <if test="execdevicemem != null" >
+        execDeviceMem = #{execdevicemem,jdbcType=REAL},
+      </if>
+      <if test="execdevicenetworkinput != null" >
+        execDeviceNetworkInput = #{execdevicenetworkinput,jdbcType=REAL},
+      </if>
+      <if test="execdevicenetworkoutput != null" >
+        execDeviceNetworkOutput = #{execdevicenetworkoutput,jdbcType=REAL},
+      </if>
+      <if test="execdevicediscwrite != null" >
+        execDeviceDiscWrite = #{execdevicediscwrite,jdbcType=REAL},
+      </if>
+      <if test="execdevicediscread != null" >
+        execDeviceDiscRead = #{execdevicediscread,jdbcType=REAL},
+      </if>
+      <if test="deviceid != null" >
+        deviceID = #{deviceid,jdbcType=BIGINT},
+      </if>
+    </set>
+    where execDeviceID = #{execdeviceid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cib.defender.dao.entity.ExecutionDevice" >
+    update t_execution_device
+    set executionID = #{executionid,jdbcType=BIGINT},
+      execDeviceCPU = #{execdevicecpu,jdbcType=REAL},
+      execDeviceMem = #{execdevicemem,jdbcType=REAL},
+      execDeviceNetworkInput = #{execdevicenetworkinput,jdbcType=REAL},
+      execDeviceNetworkOutput = #{execdevicenetworkoutput,jdbcType=REAL},
+      execDeviceDiscWrite = #{execdevicediscwrite,jdbcType=REAL},
+      execDeviceDiscRead = #{execdevicediscread,jdbcType=REAL},
+      deviceID = #{deviceid,jdbcType=BIGINT}
+    where execDeviceID = #{execdeviceid,jdbcType=BIGINT}
+  </update>
+</mapper>

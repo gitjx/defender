@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.cib.defender.dao.mapper.PerformanceExecutionMapper" >
+  <resultMap id="BaseResultMap" type="com.cib.defender.dao.entity.PerformanceExecution" >
+    <id column="executionID" property="executionid" jdbcType="BIGINT" />
+    <result column="projectID" property="projectid" jdbcType="BIGINT" />
+    <result column="executionStartTime" property="executionstarttime" jdbcType="DATE" />
+    <result column="executionEndTime" property="executionendtime" jdbcType="DATE" />
+    <result column="executionScene" property="executionscene" jdbcType="INTEGER" />
+    <result column="executionThreads" property="executionthreads" jdbcType="INTEGER" />
+    <result column="executionDetails" property="executiondetails" jdbcType="VARCHAR" />
+    <result column="executionMonitorDetails" property="executionmonitordetails" jdbcType="VARCHAR" />
+  </resultMap>
+  <sql id="Base_Column_List" >
+    executionID, projectID, executionStartTime, executionEndTime, executionScene, executionThreads, 
+    executionDetails, executionMonitorDetails
+  </sql>
+  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.Long" >
+    select 
+    <include refid="Base_Column_List" />
+    from t_performance_execution
+    where executionID = #{executionid,jdbcType=BIGINT}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Long" >
+    delete from t_performance_execution
+    where executionID = #{executionid,jdbcType=BIGINT}
+  </delete>
+  <insert id="insert" parameterType="com.cib.defender.dao.entity.PerformanceExecution" >
+    insert into t_performance_execution (executionID, projectID, executionStartTime, 
+      executionEndTime, executionScene, executionThreads, 
+      executionDetails, executionMonitorDetails
+      )
+    values (#{executionid,jdbcType=BIGINT}, #{projectid,jdbcType=BIGINT}, #{executionstarttime,jdbcType=DATE}, 
+      #{executionendtime,jdbcType=DATE}, #{executionscene,jdbcType=INTEGER}, #{executionthreads,jdbcType=INTEGER}, 
+      #{executiondetails,jdbcType=VARCHAR}, #{executionmonitordetails,jdbcType=VARCHAR}
+      )
+  </insert>
+  <insert id="insertSelective" parameterType="com.cib.defender.dao.entity.PerformanceExecution" >
+    insert into t_performance_execution
+    <trim prefix="(" suffix=")" suffixOverrides="," >
+      <if test="executionid != null" >
+        executionID,
+      </if>
+      <if test="projectid != null" >
+        projectID,
+      </if>
+      <if test="executionstarttime != null" >
+        executionStartTime,
+      </if>
+      <if test="executionendtime != null" >
+        executionEndTime,
+      </if>
+      <if test="executionscene != null" >
+        executionScene,
+      </if>
+      <if test="executionthreads != null" >
+        executionThreads,
+      </if>
+      <if test="executiondetails != null" >
+        executionDetails,
+      </if>
+      <if test="executionmonitordetails != null" >
+        executionMonitorDetails,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides="," >
+      <if test="executionid != null" >
+        #{executionid,jdbcType=BIGINT},
+      </if>
+      <if test="projectid != null" >
+        #{projectid,jdbcType=BIGINT},
+      </if>
+      <if test="executionstarttime != null" >
+        #{executionstarttime,jdbcType=DATE},
+      </if>
+      <if test="executionendtime != null" >
+        #{executionendtime,jdbcType=DATE},
+      </if>
+      <if test="executionscene != null" >
+        #{executionscene,jdbcType=INTEGER},
+      </if>
+      <if test="executionthreads != null" >
+        #{executionthreads,jdbcType=INTEGER},
+      </if>
+      <if test="executiondetails != null" >
+        #{executiondetails,jdbcType=VARCHAR},
+      </if>
+      <if test="executionmonitordetails != null" >
+        #{executionmonitordetails,jdbcType=VARCHAR},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.cib.defender.dao.entity.PerformanceExecution" >
+    update t_performance_execution
+    <set >
+      <if test="projectid != null" >
+        projectID = #{projectid,jdbcType=BIGINT},
+      </if>
+      <if test="executionstarttime != null" >
+        executionStartTime = #{executionstarttime,jdbcType=DATE},
+      </if>
+      <if test="executionendtime != null" >
+        executionEndTime = #{executionendtime,jdbcType=DATE},
+      </if>
+      <if test="executionscene != null" >
+        executionScene = #{executionscene,jdbcType=INTEGER},
+      </if>
+      <if test="executionthreads != null" >
+        executionThreads = #{executionthreads,jdbcType=INTEGER},
+      </if>
+      <if test="executiondetails != null" >
+        executionDetails = #{executiondetails,jdbcType=VARCHAR},
+      </if>
+      <if test="executionmonitordetails != null" >
+        executionMonitorDetails = #{executionmonitordetails,jdbcType=VARCHAR},
+      </if>
+    </set>
+    where executionID = #{executionid,jdbcType=BIGINT}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.cib.defender.dao.entity.PerformanceExecution" >
+    update t_performance_execution
+    set projectID = #{projectid,jdbcType=BIGINT},
+      executionStartTime = #{executionstarttime,jdbcType=DATE},
+      executionEndTime = #{executionendtime,jdbcType=DATE},
+      executionScene = #{executionscene,jdbcType=INTEGER},
+      executionThreads = #{executionthreads,jdbcType=INTEGER},
+      executionDetails = #{executiondetails,jdbcType=VARCHAR},
+      executionMonitorDetails = #{executionmonitordetails,jdbcType=VARCHAR}
+    where executionID = #{executionid,jdbcType=BIGINT}
+  </update>
+</mapper>

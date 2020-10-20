@@ -32,9 +32,5 @@ public interface UserService {
      */
     User getUserById(Long id);
 
-    /**
-     * 获取所有用户
-     * @return
-     */
-    List<User> listUser();
+
 }
